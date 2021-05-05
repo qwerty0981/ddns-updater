@@ -12,6 +12,7 @@ these resolvers can be configured through command line flags or through a
 configuration file.
 
 ## Usage
+### Simple
 The simplest way to use this binary is by configuring a cron job (or windows
 scheduled task) to run the program like below:
 ```
@@ -21,13 +22,13 @@ scheduled task) to run the program like below:
 You can learn how to set up DDNS for a namecheap domain [here](https://www.namecheap.com/support/knowledgebase/article.aspx/595/11/how-do-i-enable-dynamic-dns-for-a-domain/).
 You want to use the "Dynamic DNS Password" as the "token" for the binary.
 
-Example (this will update home.example.com to the public ip address of the 
+Example (this will update `home.example.com` to the public ip address of the 
 machine running the program)
 ```
 > ddns-updater -d example.com -n home -t 1234abcd5789efgh
 ```
 
-## Usage (Configuration file)
+### Configuration file
 If you wish to use a configuration file place a file named `.ddns-updater.yaml`
 in either the directory of the binary or in your systems `$HOME` directory. The
 file can configure the following values:
@@ -44,17 +45,17 @@ cacheFile: "~/.configFiles/cache-file"
 ```
 
 ## FAQ
-What if I don't want to cache my IP? I am paying to use Namecheap's service so
-I am going to use the whole service.
+    What if I don't want to cache my IP? I am paying to use Namecheap's service so
+    I am going to use the whole service.
 
-Fine, I am not here to police your API usage. Just set the `cacheFile` to `""`
+Thats ok, I am not here to police your API usage. Just set the `cacheFile` to `""`
 in the config file or through the command line flag.
 
 
-I want to use my own IP resolver. How do I need to set it up for it to work with
-this program?
+    I want to use my own IP resolver. How do I need to set it up for it to work with
+    this program?
 
-The program expects the IP resolvers to simply return the IP address as
+The program expects the IP resolvers to simply return the IP address in
 plaintext when they are hit with a HTTP GET request. Don't worry about trailing
 whitespace, the program will strip out everything around the IP address.
 
